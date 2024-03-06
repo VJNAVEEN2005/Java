@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 class Calculator{
 
-    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt0,btadd,btsub,btdiv,btmul,btequ,btdot;
+    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt0,btadd,btsub,btdiv,btmul,btequ,btdot,btac;
     TextField display;
 
     Calculator(){
@@ -45,6 +45,8 @@ class Calculator{
         btequ.setBounds(200,250,40,40);
         btdot =  new Button(".");
         btdot.setBounds(100,250,40,40);
+        btac = new Button("C");
+        btac.setBounds(250,200,40,90);
 
         frame.add(display);
         frame.add(bt7);
@@ -63,6 +65,7 @@ class Calculator{
         frame.add(btdot);
         frame.add(btdiv);
         frame.add(btequ);
+        frame.add(btac);
 
         bt1.addActionListener(_bt1);
         bt2.addActionListener(_bt2);
@@ -77,6 +80,10 @@ class Calculator{
         btdot.addActionListener(_btdot);
         btadd.addActionListener(_btadd);
         btequ.addActionListener(_btequ);
+        btsub.addActionListener(_btsub);
+        btmul.addActionListener(_btmul);
+        btdiv.addActionListener(_btdiv);
+        btac.addActionListener(_btac);
 
         frame.setLayout(null);
         frame.setSize(500,500);
@@ -162,10 +169,12 @@ class Calculator{
 
     //the operation start from here
     float num1,num2;
+    String a = "";
     ActionListener _btadd = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             num1 = Float.parseFloat(display.getText());
+            a="+";
             display.setText("");
         }
     };
@@ -174,15 +183,57 @@ class Calculator{
         @Override
         public void actionPerformed(ActionEvent e) {
             num1 = Float.parseFloat(display.getText());
+            a="-";
             display.setText("");
+        }
+    };
+
+    ActionListener _btmul = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            num1 = Float.parseFloat(display.getText());
+            a="*";
+            display.setText("");
+        }
+    };
+
+    ActionListener _btdiv = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            num1 = Float.parseFloat(display.getText());
+            a="/";
+            display.setText("");
+        }
+    };
+
+    ActionListener _btac =  new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            num1 = 0;
+            num2 = 0;
+            a="";
+            display.setText("");
+
         }
     };
 
     ActionListener _btequ = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            num2 = Float.parseFloat(display.getText());
-            display.setText(String.valueOf(num1+num2));
+
+            if (a == "+"){
+                num2 = Float.parseFloat(display.getText());
+                display.setText(String.valueOf(num1+num2));
+            } else if (a =="-") {
+                num2 = Float.parseFloat(display.getText());
+                display.setText(String.valueOf(num1-num2));
+            } else if (a == "*") {
+                num2 = Float.parseFloat(display.getText());
+                display.setText(String.valueOf(num1*num2));
+            } else if (a == "/") {
+                num2 = Float.parseFloat(display.getText());
+                display.setText(String.valueOf(num1/num2));
+            }
         }
     };
 
