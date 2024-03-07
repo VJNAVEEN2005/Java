@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 class Calculator{
 
-    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt0,btadd,btsub,btdiv,btmul,btequ,btdot,btac;
+    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt0,btadd,btsub,btdiv,btmul,btequ,btdot,btac,btper; // btper is not still added
     TextField display;
 
     Calculator(){
