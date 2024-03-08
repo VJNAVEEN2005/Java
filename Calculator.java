@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 class Calculator{
 
-    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt0,btadd,btsub,btdiv,btmul,btequ,btdot,btac;
+    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt0,btadd,btsub,btdiv,btmul,btequ,btdot,btac,btremove;
     TextField display;
 
     Calculator(){
@@ -47,6 +47,8 @@ class Calculator{
         btdot.setBounds(100,250,40,40);
         btac = new Button("C");
         btac.setBounds(250,200,40,90);
+        btremove = new Button("<");
+        btremove.setBounds(250, 100, 40, 40);
 
         frame.add(display);
         frame.add(bt7);
@@ -66,6 +68,7 @@ class Calculator{
         frame.add(btdiv);
         frame.add(btequ);
         frame.add(btac);
+        frame.add(btremove);
 
         bt1.addActionListener(_bt1);
         bt2.addActionListener(_bt2);
@@ -84,6 +87,7 @@ class Calculator{
         btmul.addActionListener(_btmul);
         btdiv.addActionListener(_btdiv);
         btac.addActionListener(_btac);
+        btremove.addActionListener(_btremove);
 
         frame.setLayout(null);
         frame.setSize(500,500);
@@ -179,7 +183,7 @@ class Calculator{
         }
     };
 
-    ActionListener _btsub = new ActionListener() {                  //not finished
+    ActionListener _btsub = new ActionListener() {                  
         @Override
         public void actionPerformed(ActionEvent e) {
             num1 = Float.parseFloat(display.getText());
@@ -214,6 +218,13 @@ class Calculator{
             a="";
             display.setText("");
 
+        }
+    };
+
+    ActionListener _btremove = new ActionListener() {               //not finished
+        public void actionPerformed(ActionEvent e){
+
+            display.setText(display.getText()+"\b\b");
         }
     };
 
