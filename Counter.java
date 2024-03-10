@@ -49,7 +49,6 @@ class Counter{
 
 
     public static void main(String[] args) {
-        int i=0;
         Counter counter = new Counter();
     }
 }
