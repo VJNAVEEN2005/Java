@@ -223,8 +223,9 @@ class Calculator{
 
     ActionListener _btremove = new ActionListener() {               //not finished
         public void actionPerformed(ActionEvent e){
-
-            display.setText(display.getText()+"\b\b");
+            String get = display.getText();
+            get = get.substring(0,get.length()-1);
+            display.setText(get);
         }
     };
 
