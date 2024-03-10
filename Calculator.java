@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 class Calculator{
 
-    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt0,btadd,btsub,btdiv,btmul,btequ,btdot,btac,btremove;
+    Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt0,btadd,btsub,btdiv,btmul,btequ,btdot,btac,btremove,btmod;
     TextField display;
 
     Calculator(){
@@ -49,6 +49,8 @@ class Calculator{
         btac.setBounds(250,200,40,90);
         btremove = new Button("<");
         btremove.setBounds(250, 100, 40, 40);
+        btmod = new Button("%");
+        btmod.setBounds(250, 150, 40, 40);
 
         frame.add(display);
         frame.add(bt7);
@@ -69,6 +71,7 @@ class Calculator{
         frame.add(btequ);
         frame.add(btac);
         frame.add(btremove);
+        frame.add(btmod);
 
         bt1.addActionListener(_bt1);
         bt2.addActionListener(_bt2);
@@ -88,6 +91,7 @@ class Calculator{
         btdiv.addActionListener(_btdiv);
         btac.addActionListener(_btac);
         btremove.addActionListener(_btremove);
+        btmod.addActionListener(_btmod);
 
         frame.setLayout(null);
         frame.setSize(500,500);
@@ -210,6 +214,14 @@ class Calculator{
         }
     };
 
+    ActionListener _btmod = new ActionListener() {
+        public void actionPerformed(ActionEvent e){
+            num1 = Float.parseFloat(display.getText());
+            a="%";
+            display.setText("");
+        }
+    };
+
     ActionListener _btac =  new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -221,7 +233,7 @@ class Calculator{
         }
     };
 
-    ActionListener _btremove = new ActionListener() {               //not finished
+    ActionListener _btremove = new ActionListener() {             
         public void actionPerformed(ActionEvent e){
             String get = display.getText();
             get = get.substring(0,get.length()-1);
@@ -245,6 +257,9 @@ class Calculator{
             } else if (a == "/") {
                 num2 = Float.parseFloat(display.getText());
                 display.setText(String.valueOf(num1/num2));
+            } else if (a == "%"){
+                num2 = Float.parseFloat(display.getText());
+                display.setText(String.valueOf(num1%num2));
             }
         }
     };
